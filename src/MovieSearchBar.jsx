@@ -1,7 +1,5 @@
 import MovieForm from "./MovieForm";
 import React from "react";
-import { RotatingLines } from "react-loader-spinner";
-
 import "./App.css";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
