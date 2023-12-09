@@ -80,29 +80,34 @@ export default function MovieSearchBar() {
         <MovieForm
           movieName={movieName}
           inputStyle={{
-            width: "400px",
-            height: "40px",
+            width: "300px",
+            height: "25px",
             borderRadius: "30px",
             marginRight: "15px",
             marginleft: "0px",
             marginTop: "0px",
+            fontSize: "15px",
           }}
           buttonStyle={{
-            borderRadius: "30px",
-            marginTop: "5px",
+            borderRadius: "20px",
+            marginTop: "7px",
             marginRight: "0px",
             marginLeft: "10px",
+            fontSize: "15px",
+            padding: "0px",
+            height: "35px",
+            width: "90px",
           }}
           containerStyle={{
             display: "flex",
             flexDirection: "row",
             alignItems: "flex-start",
             justifyContent: "flex-start",
-            height: "20vh",
+            height: "10vh",
             marginTop: "10px",
           }}
           h1Style={{
-            fontSize: "40px",
+            fontSize: "30px",
             margin: "0px",
             marginRight: "20px",
             marginTop: "5px",
@@ -136,8 +141,8 @@ export default function MovieSearchBar() {
                   sx={{
                     color: "white",
                     position: "relative",
-                    bottom: "11px",
-                    fontSize: "30px",
+                    bottom: "23px",
+                    fontSize: "25px",
                     fontWeight: "30px",
                   }}
                 >
@@ -148,13 +153,13 @@ export default function MovieSearchBar() {
                     display: "flex",
                     alignItems: "center",
                     position: "relative",
-                    bottom: "20px",
+                    bottom: "40px",
                   }}
                 >
                   <Typography
                     sx={{
                       color: "white",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       position: "relative",
                       bottom: "-10px",
                     }}
@@ -165,7 +170,7 @@ export default function MovieSearchBar() {
                   <Typography
                     sx={{
                       color: "white",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       position: "relative",
                       bottom: "-10px",
                     }}
@@ -177,7 +182,7 @@ export default function MovieSearchBar() {
                   <Typography
                     sx={{
                       color: "white",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       position: "relative",
                       bottom: "-10px",
                     }}
@@ -191,10 +196,10 @@ export default function MovieSearchBar() {
                   color="text.secondary"
                   sx={{
                     color: "white",
-                    fontSize: "22px",
+                    fontSize: "20px",
                     position: "relative",
                     right: "15px",
-                    bottom: "1px",
+                    bottom: "25px",
                     overflow: "hidden",
                   }}
                 >
