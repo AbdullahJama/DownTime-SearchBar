@@ -13,9 +13,6 @@ export default function MovieSearchBar() {
   const [formData, setData] = useState("");
   const [responseData, setResponse] = useState({ Data: null, loading: true });
 
-  console.log(formData);
-  console.log(responseData);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,150 +71,159 @@ export default function MovieSearchBar() {
     }
     return "Genre not available";
   };
-  //1
 
   return (
     <div>
       {!responseData.data && responseData.loading ? (
-        <div>
-          {" "}
-          <h1 className="header">DownTime</h1>
-          <MovieForm movieName={movieName} />
-        </div>
+        <MovieForm movieName={movieName} />
       ) : (
-        <div>
-          <h2 className="header">DownTime</h2>
-          <MovieForm
-            movieName={movieName}
-            inputStyle={{
-              position: "relative",
-              left: "-520px",
-              bottom: "125px",
-              width: "400px",
-              height: "40px",
-              borderRadius: "30px",
-            }}
-            buttonStyle={{
-              position: "relative",
-              bottom: "123px",
-              right: "530px",
-              borderRadius: "30px",
-            }}
-          />
-        </div>
+        <MovieForm
+          movieName={movieName}
+          inputStyle={{
+            width: "400px",
+            height: "40px",
+            borderRadius: "30px",
+            marginRight: "15px",
+            marginleft: "0px",
+            marginTop: "0px",
+          }}
+          buttonStyle={{
+            borderRadius: "30px",
+            marginTop: "5px",
+            marginRight: "0px",
+            marginLeft: "10px",
+          }}
+          containerStyle={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            height: "20vh",
+            marginTop: "10px",
+          }}
+          h1Style={{
+            fontSize: "40px",
+            margin: "0px",
+            marginRight: "20px",
+            marginTop: "5px",
+          }}
+        />
       )}
+      {responseData.loading && <p>Loading...</p>}
 
       {responseData.data && (
-        <Card
-          className="movieCard"
-          sx={{
-            borderRadius: "30px",
-            border: "3px solid orange",
-            outline: "none",
-          }}
-        >
-          <CardMedia
-            sx={{ width: "100%", height: "100%" }}
-            component="img"
-            alt="Movie Poster"
-            height="140"
-            image={responseData.data.poster_path}
-          />
-          <div className="layover">
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                sx={{
-                  color: "white",
-                  position: "relative",
-                  bottom: "11px",
-                  fontSize: "30px",
-                  fontWeight: "30px",
-                }}
-              >
-                {responseData.data.title}
-              </Typography>
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  position: "relative",
-                  bottom: "20px",
-                }}
-              >
+        <div className="cardContainer">
+          <Card
+            className="movieCard"
+            sx={{
+              borderRadius: "30px",
+              border: "3px solid orange",
+              outline: "none",
+            }}
+          >
+            <CardMedia
+              sx={{ width: "100%", height: "100%" }}
+              component="img"
+              alt="Movie Poster"
+              height="140"
+              image={responseData.data.poster_path}
+            />
+            <div className="layover">
+              <CardContent>
                 <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
                   sx={{
                     color: "white",
-                    fontSize: "20px",
                     position: "relative",
-                    bottom: "-10px",
+                    bottom: "11px",
+                    fontSize: "30px",
+                    fontWeight: "30px",
                   }}
                 >
-                  {truncateGenre(responseData.data.genres, 1)}
+                  {responseData.data.title}
                 </Typography>
-                ""
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    position: "relative",
+                    bottom: "20px",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: "20px",
+                      position: "relative",
+                      bottom: "-10px",
+                    }}
+                  >
+                    {truncateGenre(responseData.data.genres, 1)}
+                  </Typography>
+                  ""
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: "20px",
+                      position: "relative",
+                      bottom: "-10px",
+                    }}
+                  >
+                    {" "}
+                    |{" "}
+                  </Typography>
+                  ""
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: "20px",
+                      position: "relative",
+                      bottom: "-10px",
+                    }}
+                  >
+                    {responseData.data.release_date}
+                  </Typography>
+                </span>
+
                 <Typography
+                  variant="body2"
+                  color="text.secondary"
                   sx={{
                     color: "white",
-                    fontSize: "20px",
+                    fontSize: "22px",
                     position: "relative",
-                    bottom: "-10px",
+                    right: "15px",
+                    bottom: "1px",
+                    overflow: "hidden",
                   }}
                 >
-                  {" "}
-                  |{" "}
+                  {truncateText(responseData.data.overview, 150)}
                 </Typography>
-                ""
-                <Typography
-                  sx={{
-                    color: "white",
-                    fontSize: "20px",
-                    position: "relative",
-                    bottom: "-10px",
-                  }}
+
+                <Typography sx={{ color: "white" }}></Typography>
+              </CardContent>
+              <CardActions>
+                <button
+                  className="myButton2"
+                  size="small"
+                  onClick={() => buttonHandle("button1")}
                 >
-                  {responseData.data.release_date}
-                </Typography>
-              </span>
+                  Trailer
+                </button>
 
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{
-                  color: "white",
-                  fontSize: "22px",
-                  position: "relative",
-                  right: "15px",
-                  bottom: "1px",
-                  overflow: "hidden",
-                }}
-              >
-                {truncateText(responseData.data.overview, 150)}
-              </Typography>
-
-              <Typography sx={{ color: "white" }}></Typography>
-            </CardContent>
-            <CardActions>
-              <button
-                className="myButton2"
-                size="small"
-                onClick={() => buttonHandle("button1")}
-              >
-                Trailer
-              </button>
-
-              <button
-                className="myButton1"
-                size="small"
-                onClick={() => buttonHandle("button2")}
-              >
-                Watch it
-              </button>
-            </CardActions>
-          </div>
-        </Card>
+                <button
+                  className="myButton1"
+                  size="small"
+                  onClick={() => buttonHandle("button2")}
+                >
+                  Watch it
+                </button>
+              </CardActions>
+            </div>
+          </Card>
+        </div>
       )}
     </div>
   );

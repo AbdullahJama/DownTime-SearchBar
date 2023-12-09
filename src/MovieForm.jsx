@@ -2,9 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./App.css";
 import SearchIcon from "@mui/icons-material/Search";
-import InputAdornment from "@mui/material/InputAdornment";
 
-export default function ({ movieName, inputStyle, buttonStyle }) {
+export default function ({
+  movieName,
+  inputStyle,
+  buttonStyle,
+  containerStyle,
+  h1Style,
+}) {
   const [movie, setMovie] = useState("");
   const changeHandle = (e) => {
     setMovie((m) => e.target.value);
@@ -17,7 +22,9 @@ export default function ({ movieName, inputStyle, buttonStyle }) {
   };
 
   return (
-    <form onSubmit={submitHandle}>
+    <form style={containerStyle} className="movieForm" onSubmit={submitHandle}>
+      <h1 style={h1Style}>DownTime</h1>
+
       <input
         style={inputStyle}
         type="text"
@@ -25,7 +32,6 @@ export default function ({ movieName, inputStyle, buttonStyle }) {
         onChange={changeHandle}
         placeholder="Search a movie.."
       />
-
       <button
         onClick={submitHandle}
         variant="contained"
