@@ -109,7 +109,6 @@ export default function MovieSearchBar() {
           }}
         />
       )}
-      {responseData.loading && <p>Loading...</p>}
 
       {responseData.data && (
         <div className="cardContainer">
